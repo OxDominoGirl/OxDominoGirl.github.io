@@ -479,11 +479,258 @@ footer a:hover{color:var(--blue);}
 .fade-in{opacity:0;transform:translateY(20px);transition:all 0.6s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
 
+/* ── HAMBURGER (hidden on desktop) ── */
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;z-index:1001;
+  background:none;border:none;padding:8px;
+  -webkit-tap-highlight-color:transparent;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--black);border-radius:1px;
+  transition:transform 0.3s ease,opacity 0.3s ease;
+}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ── MOBILE NAV OVERLAY ── */
+.nav-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.3);z-index:98;
+  opacity:0;transition:opacity 0.3s ease;
+}
+.nav-overlay.open{display:block;opacity:1;}
+
+/* ═══════════════════════════════════════
+   TABLET — max-width 1024px
+   ═══════════════════════════════════════ */
 @media(max-width:1024px){
-  .hero,.skills-section{grid-template-columns:1fr;}
+
+  /* ── Nav ── */
+  .hamburger{display:flex;}
+
+  .nav-links{
+    position:fixed;top:0;right:-280px;
+    width:280px;height:100vh;height:100dvh;
+    flex-direction:column;
+    background:var(--white);
+    padding:80px 32px 40px;
+    gap:28px;
+    transition:right 0.35s ease;
+    z-index:99;
+    box-shadow:-4px 0 24px rgba(0,0,0,0.12);
+    overflow-y:auto;
+  }
+  .nav-links.open{right:0;}
+  .nav-links a{font-size:1rem;}
+
+  .nav-right{gap:12px;}
+  .nav-btn{padding:8px 18px;font-size:0.8rem;}
+
+  /* ── Hero ── */
+  .hero{padding:40px 30px 0;}
+  .hero-split{
+    grid-template-columns:1fr !important;
+    gap:32px;min-height:auto;
+  }
+  .hero-interactive{height:360px;}
+  .hero-about h1{font-size:2.8rem;}
+
+  /* ── Stats ── */
+  .stats-section{padding:60px 30px;}
+  .stats-heading{font-size:2.2rem;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:28px;}
+
+  /* ── Timeline header bar ── */
+  #experience > div:first-child{
+    padding-left:30px !important;
+    padding-right:30px !important;
+    flex-direction:column;
+    align-items:flex-start !important;
+    gap:16px;
+  }
+
+  /* ── Timeline grid ── */
+  #timeline-wrapper{
+    grid-template-columns:1fr !important;
+  }
+  #timeline-wrapper > div:first-child{
+    display:none !important;
+  }
+  #timeline-items{
+    padding:30px 30px !important;
+  }
+  .tl-item h3{font-size:1.6rem !important;}
+
+  /* ── Skills ── */
+  .skills-section{padding:60px 30px;}
+
+  /* ── Viz gallery — the inline grid ── */
+  #projects .projects-inner > div:last-child{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+  .projects-section{padding:60px 30px;}
+
+  /* ── Currently Building ── */
+  #building{padding-left:30px;padding-right:30px;}
+  #building > div:last-child{
+    grid-template-columns:1fr 1fr !important;
+  }
+  #building > div:last-child > div:last-child{
+    grid-column:span 2;
+  }
+
+  /* ── Contact ── */
+  #contact{padding:60px 30px !important;}
+  #contact > div{
+    grid-template-columns:1fr !important;
+    gap:40px !important;
+  }
+
+  /* ── Footer ── */
+  footer{padding:24px 30px;}
+
+  /* ── Section spacing ── */
+  .section{padding-left:30px;padding-right:30px;}
+  .edu-section{padding-left:30px;padding-right:30px;}
+  .edu-grid{grid-template-columns:repeat(2,1fr);}
   .exp-grid,.proj-grid{grid-template-columns:1fr 1fr;}
-  .stats-grid,.edu-grid{grid-template-columns:repeat(2,1fr);}
-  nav,.hero,.section,.skills-section,.projects-section,.edu-section,.cta-section{padding-left:30px;padding-right:30px;}
+  .cta-section{padding-left:30px;padding-right:30px;grid-template-columns:1fr;}
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE — max-width 640px
+   ═══════════════════════════════════════ */
+@media(max-width:640px){
+
+  /* ── Typography ── */
+  .hero-about h1{font-size:2rem !important;letter-spacing:-1px;}
+  .stats-heading{font-size:1.75rem !important;}
+  .section-title{font-size:2rem !important;}
+  .skills-content h2{font-size:2rem !important;}
+  .tl-item h3{font-size:1.3rem !important;}
+
+  /* ── Nav ── */
+  nav{padding:0 20px;height:56px;}
+  .nav-name{font-size:0.95rem;}
+  .nav-links{padding:72px 24px 32px;width:260px;right:-260px;}
+  .nav-btn{padding:8px 14px;font-size:0.78rem;}
+
+  /* ── Hero ── */
+  .hero{padding:28px 20px 0;}
+  .hero-interactive{height:280px;}
+  .hero-about p{font-size:0.95rem;margin-top:16px;}
+
+  /* ── Stats ── */
+  .stats-section{padding:48px 20px;}
+  .stats-sub{font-size:0.9rem;}
+  .stat-item .stat-num{font-size:2.5rem;}
+  .stat-item .stat-label{font-size:0.7rem;letter-spacing:1.5px;}
+
+  /* ── Timeline header ── */
+  #experience > div:first-child{
+    padding:14px 20px !important;
+    top:56px !important;
+    gap:12px;
+  }
+  #experience > div:first-child .section-title{
+    font-size:1.5rem !important;
+  }
+  #experience > div:first-child > div:last-child{
+    flex-wrap:wrap !important;
+    gap:0 !important;
+  }
+  #experience > div:first-child > div:last-child button{
+    font-size:0.7rem !important;
+    padding:6px 14px !important;
+  }
+
+  /* ── Timeline items ── */
+  #timeline-items{padding:20px 20px !important;}
+  .tl-item{margin-bottom:40px !important;}
+  .tl-item p{font-size:0.85rem !important;}
+
+  /* ── Skills ── */
+  .skills-section{padding:48px 20px;}
+  .skills-content p{font-size:0.9rem;}
+  .skill-pill{padding:6px 12px;font-size:0.75rem;}
+  .skill-cat-name{font-size:0.65rem;}
+
+  /* ── Viz gallery ── */
+  .projects-section{padding:48px 20px;}
+  #projects .projects-inner > div:last-child{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+  .viz-img-wrap{aspect-ratio:4/3;}
+
+  /* ── Currently Building ── */
+  #building{padding:48px 20px !important;}
+  #building > div:last-child{
+    grid-template-columns:1fr !important;
+    border:none !important;
+    gap:0 !important;
+  }
+  #building > div:last-child > div{
+    border-right:none !important;
+    border-bottom:1px solid #e5e7eb;
+    padding:20px 0 !important;
+  }
+  #building > div:last-child > div:last-child{
+    grid-column:auto;
+    border-bottom:none;
+  }
+
+  /* ── Contact ── */
+  #contact{padding:48px 20px !important;}
+  #contact > div{
+    padding-top:40px !important;
+    gap:28px !important;
+  }
+  #contact h2{font-size:2rem !important;}
+  #contact-methods{gap:6px !important;}
+  #contact-methods .cm{
+    padding:7px 12px !important;
+    font-size:0.75rem !important;
+  }
+
+  /* ── Footer ── */
+  footer{
+    padding:20px;
+    flex-direction:column;
+    gap:14px;
+    text-align:center;
+    align-items:center;
+  }
+
+  /* ── Sections ── */
+  .section{padding:48px 20px;}
+  .cta-section{gap:32px;padding:48px 20px;}
+  .cta-text h2{font-size:2rem;}
+}
+
+
+/* ═══════════════════════════════════════
+   SMALL PHONES — max-width 380px
+   ═══════════════════════════════════════ */
+@media(max-width:380px){
+  .hero-about h1{font-size:1.7rem !important;}
+  .stats-grid{grid-template-columns:1fr !important;}
+  .stat-item .stat-num{font-size:2rem;}
+  nav{padding:0 14px;}
+  .hero{padding:20px 14px 0;}
+  .stats-section{padding:36px 14px;}
+  .skills-section{padding:36px 14px;}
+  .projects-section{padding:36px 14px;}
+  #timeline-items{padding:16px 14px !important;}
+  #experience > div:first-child{padding:12px 14px !important;}
+  #contact{padding:36px 14px !important;}
+  #building{padding:36px 14px !important;}
+  .section{padding:36px 14px;}
+  footer{padding:16px 14px;}
 }
 </style>
 </head>
@@ -492,7 +739,7 @@ footer a:hover{color:var(--blue);}
 <!-- NAV -->
 <nav>
   <div class="nav-name">Leena Miskin</div>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#about">About</a>
     <a href="#experience">Journey</a>
     <a href="#skills">Skills</a>
@@ -501,8 +748,12 @@ footer a:hover{color:var(--blue);}
   </div>
   <div class="nav-right">
     <a class="nav-btn" href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Get in Touch</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-overlay" id="nav-overlay"></div>
 
 <!-- HERO -->
 <section class="hero" id="about">
@@ -1196,6 +1447,46 @@ function toggleTimeline(type) {
     });
   }, 300);
 }
+</script>
+<script>
+// ── HAMBURGER MENU ──
+(function(){
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('nav-links');
+  var overlay = document.getElementById('nav-overlay');
+  if(!hamburger || !navLinks) return;
+
+  function closeMenu(){
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openMenu(){
+    hamburger.classList.add('active');
+    navLinks.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  hamburger.addEventListener('click', function(){
+    if(navLinks.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+
+  // Close on link click
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Close on overlay click
+  overlay.addEventListener('click', closeMenu);
+
+  // Close on escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+})();
 </script>
 </body>
 </html>
