@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OxDominoGirl — MegaETH Visualizations</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
+  :root { --bg:#e8e4dc; --border:#1a1a1a; --black:#0f0f0f; --muted:#7a7570; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--black); font-family:'Barlow Condensed',sans-serif; min-height:100vh; }
+
+  header { padding:48px 40px 32px; border-bottom:1px solid var(--border); }
+  .site-label { font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .site-title { font-size:64px; font-weight:900; letter-spacing:0.01em; line-height:1; }
+  .site-sub { font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); margin-top:10px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:none; }
+  @media(max-width:700px){ .grid { grid-template-columns:1fr; } }
+
+  a.card {
+    display:block; padding:36px 40px 40px;
+    border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+    text-decoration:none; color:inherit;
+    transition:background 0.12s;
+    position:relative;
+  }
+  a.card:last-child { border-right:none; }
+  @media(max-width:700px){ a.card { border-right:none; } }
+  a.card:hover { background:rgba(15,15,15,0.04); }
+
+  .card-num { font-size:11px; font-weight:700; letter-spacing:0.15em; color:var(--muted); margin-bottom:20px; }
+  .card-title { font-size:48px; font-weight:900; letter-spacing:0.01em; line-height:1; margin-bottom:10px; }
+  .card-desc { font-family:'Space Mono',monospace; font-size:10px; color:var(--muted); line-height:1.7; }
+  .card-arrow {
+    position:absolute; bottom:28px; right:32px;
+    font-size:22px; font-weight:900; color:var(--muted);
+    transition:transform 0.12s, color 0.12s;
+  }
+  a.card:hover .card-arrow { transform:translate(3px,-3px); color:var(--black); }
+
+  footer { padding:24px 40px; border-top:1px solid rgba(15,15,15,0.15); }
+  .footer-text { font-family:'Space Mono',monospace; font-size:10px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-label">ON-CHAIN ANALYTICS</div>
+  <div class="site-title">MEGAETH</div>
+  <div class="site-sub">real-time visualizations — oxdominogirl</div>
+</header>
+
+<div class="grid">
+  <a class="card" href="https://oxdominogirl.github.io/MEGAETH-USERS/">
+    <div class="card-num">01</div>
+    <div class="card-title">USERS</div>
+    <div class="card-desc">
+      wallet growth over time<br>
+      active accounts per day<br>
+      new first-time wallets
+    </div>
+    <div class="card-arrow">↗</div>
+  </a>
+
+  <a class="card" href="https://oxdominogirl.github.io/MEGAETH-DUAL-BLOCK-PRODUCTION/">
+    <div class="card-num">02</div>
+    <div class="card-title">BLOCKS</div>
+    <div class="card-desc">
+      real-time block production<br>
+      EVM vs MegaETH blocks<br>
+      live block race visualizer
+    </div>
+    <div class="card-arrow">↗</div>
+  </a>
+
+  <a class="card" href="https://oxdominogirl.github.io/megaeth-heatmap/">
+    <div class="card-num">03</div>
+    <div class="card-title">HEATMAP</div>
+    <div class="card-desc">
+      contract deployment density<br>
+      activity by block range<br>
+      on-chain deployment patterns
+    </div>
+    <div class="card-arrow">↗</div>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-text">data: megaeth.blockscout.com · updated live</div>
+</footer>
+
+</body>
+</html>
